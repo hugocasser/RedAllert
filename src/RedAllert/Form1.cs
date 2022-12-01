@@ -1,4 +1,4 @@
-namespace RedAllert
+﻿namespace RedAllert
 {
     public partial class Form1 : Form
     {
@@ -27,6 +27,8 @@ namespace RedAllert
                 _gameObjects[i]?.Update();
 
             pictureBox1.Invalidate();
+
+            new DebufWindow("я тебя люблю");
         }
 
         /// <summary>
