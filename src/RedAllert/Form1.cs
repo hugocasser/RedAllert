@@ -28,7 +28,7 @@
 
             pictureBox1.Invalidate();
 
-            new DebufWindow("я тебя люблю");
+            new BattleWindow();
         }
 
         /// <summary>

@@ -33,28 +33,37 @@ namespace RedAllert
             switch (cube)
             {
                 case 1:
-                    if (this.Attack > 0)
-                        this.Attack -= 1;
+                    if (Attack > 0)
+                    {
+                        Attack -= 1;
+                        new DebufWindow("О нет... Вы нашли бутылочку пива. Ваша атака понижается на 1 ед.");
+                    }
                     break;
                 case 2:
-                    this.Attack += 1;
+                    Attack += 1;
+                    new DebufWindow("О да... Вы нашли бутылочку пива. Ваша атака повышается на 1 ед.");
                     break;
                 case 3:
-                    this.Health += 1;
+                    Health += 1;
+                    new DebufWindow("О да... У вас в трусах новичок. Ваше здоровье повышается на 1 ед.");
                     break;
                 case 4:
-                    if (this.Health > 1)
-                        this.Health -= 1;
+                    if (Health > 1)
+                    {
+                        Health -= 1;
+                        new DebufWindow("О нет... У вас в трусах новичок. Ваше здоровье падает на 1 ед.");
+                    }
                     break;
                 case 5:
-                    if ((this.Health == 1 && this.Attack < 2) || (this.Health < 4 && this.Attack == 0))
+                    if ((Health == 1 && this.Attack < 2) || (this.Health < 4 && this.Attack == 0))
                     {
-                        this.Health = 1;
-                        this.Attack = 10;
+                        Health = 1;
+                        Attack = 10;
+                        new DebufWindow("ОООООООООООООООООООООО Вы выпили бутылочку водочки.");
                     }
                     break;
                 case 6:
-                    
+                    new BattleWindow();
                     break;
                 
             }

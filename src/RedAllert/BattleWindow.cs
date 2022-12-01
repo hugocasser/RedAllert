@@ -18,16 +18,18 @@ namespace RedAllert
         private GameObject _player;
         private GameObject _enemy;
 
-        public BattleWindow(GameObject player, GameObject enemy)
+        public BattleWindow()
         {
             InitializeComponent();
-            _player = player;
-            _enemy = enemy;
+            //_player = player;
+            // _enemy = enemy;
 
             label1.Text = $"Здоровьешко ";
             label2.Text = $"Здоровьешко ";
 
+
             pictureBox1.Invalidate();
+            Show();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -38,8 +40,8 @@ namespace RedAllert
         private void Draw(object sender, PaintEventArgs e)
         {
             var graphics = e.Graphics;
-            _player.Draw(graphics);
-            _enemy.Draw(graphics);
+            // _player.Draw(graphics);
+            // _enemy.Draw(graphics);
         }
 
         /// <summary>
