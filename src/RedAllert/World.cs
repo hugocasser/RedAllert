@@ -17,8 +17,6 @@ namespace RedAllert
         {
             _gameObjectSolidBrush = new SolidBrush(Color.Gray);
             InitMap();
-
-
         }
 
         public void SetToTile(GameObject gameObject) {
@@ -57,16 +55,16 @@ namespace RedAllert
             var yCount = 6;
 
             for (int x = X; x <= xCount + X; x++)
-                _tiles.Add(new Tile(x, Y, 32, 32, Form));
+                _tiles.Add(new Tile(x, Y, 32, 32, Form,0));
 
             for (int y = Y + 1; y <= yCount + Y; y++)
-                _tiles.Add(new Tile(X + xCount, y, 32, 32, Form));
+                _tiles.Add(new Tile(X + xCount, y, 32, 32, Form, 90));
 
             for (int x = X + xCount; x >= X; x--)
-                _tiles.Add(new Tile(x, Y + yCount + 1, 32, 32, Form));
+                _tiles.Add(new Tile(x, Y + yCount + 1, 32, 32, Form, 0));
 
             for (int y = Y + yCount; y >= Y; y--)
-                _tiles.Add(new Tile(X, y, 32, 32, Form));
+                _tiles.Add(new Tile(X, y, 32, 32, Form, 90));
         }
     }
 }

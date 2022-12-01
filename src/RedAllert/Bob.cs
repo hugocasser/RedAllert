@@ -9,20 +9,18 @@ namespace RedAllert
 {
     public class Bob : GameObject
     {
-        private SolidBrush _gameObjectSolidBrush;
         private World _world;
 
 
         public Bob(int x, int y, int width, int height, Form1 form, World world) : base(x, y, width, height, form) 
         {
-            _gameObjectSolidBrush = new SolidBrush(Color.Blue);
             _world = world;
             world.SetToTile(this);
         }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillRectangle(_gameObjectSolidBrush, new Rectangle(X * Width, Y * Height, Width, Height));
+            graphics.DrawImage(Image.FromFile("../../../resources/characters.png"), new Point(X * Width, Y * Height)); 
         }
 
         public override void Update()

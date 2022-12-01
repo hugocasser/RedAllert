@@ -4,21 +4,24 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace RedAllert
 {
     public class Tile : GameObject
     {
         private SolidBrush _gameObjectSolidBrush;
+        public Image Sprite = Image.FromFile("../../../resources/dirt.png");
 
-        public Tile(int x, int y, int width, int height, Form1 form) : base(x, y, width, height, form) 
+        public Tile(int x, int y, int width, int height, Form1 form,float rotation) : base(x, y, width, height, form) 
         {
             _gameObjectSolidBrush = new SolidBrush(Color.Gray);
+            Sprite = RotateImage(Sprite, rotation);
         }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillRectangle(_gameObjectSolidBrush, new Rectangle(X * Width, Y * Height, Width, Height));
+            graphics.DrawImage(Sprite, X * Width, Y * Height);
         }
 
         public override void Update() {}
