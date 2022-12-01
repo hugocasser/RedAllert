@@ -4,6 +4,8 @@
     public class FuckingRat : ALifeUnit
     {
         private SolidBrush _gameObjectSolidBrush;
+        public Image Sprite = Image.FromFile("../../../resources/dirt.png");
+
 
         public FuckingRat(int x, int y, int width, int height, Form1 form, int health, int attack, string name) : base(x, y, width,
             height, form, health, attack, name)
@@ -17,9 +19,14 @@
 
         public override void Draw(Graphics graphics)
         {
-            graphics.FillRectangle(_gameObjectSolidBrush, new Rectangle(X * Width, Y * Height, Width, Height));
+
         }
         
+        public override void BattleDraw(Graphics graphics)
+        {
+            graphics.DrawImage(Sprite, X * Width, Y * Height);
+        }
+
         public override void Update()
         {
             //throw new NotImplementedException();

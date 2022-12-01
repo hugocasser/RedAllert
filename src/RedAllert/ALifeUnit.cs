@@ -14,6 +14,7 @@
             Attack = attack;
             Name = name;
         }
-        
+
+        public abstract void BattleDraw(Graphics graphics);
     }
 }

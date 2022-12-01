@@ -20,8 +20,9 @@ namespace RedAllert
             graphics.DrawImage(Image.FromFile("../../../resources/characters.png"), new Point(X * Width, Y * Height)); 
         }
 
-        public void DrawOnBattle(Graphics graphics)
+        public override void BattleDraw(Graphics graphics)
         {
+            graphics.DrawImage(Sprite, X * Width, Y * Height);
         }
 
         public override void Update()
