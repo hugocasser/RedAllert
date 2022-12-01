@@ -25,7 +25,6 @@ namespace RedAllert
 
         public override void Update()
         {
-
             _world.MoveToNextTile(this);
         }
     }
