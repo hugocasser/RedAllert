@@ -11,7 +11,7 @@ namespace RedAllert
         private void Start(object sender, EventArgs e)
         {
             var world = new World(3,3,0,0,this);
-            new Bob(4, 6, 32, 32, this,world);
+            new Bob(4, 6, 32, 32, this,world, 3, 10, "Bob");
         }
 
         public void CreateNewObject(GameObject gameObject) => _gameObjects.Add(gameObject);
