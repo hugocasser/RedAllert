@@ -1,21 +1,28 @@
-﻿namespace RedAllert
+﻿using System.Media;
+
+namespace RedAllert
 {
     public class Bob : ALifeUnit
     {
-        public Image Sprite = Image.FromFile("../../../resources/dirt.png");
+        public Image Sprite = Image.FromFile("../../../resources/characters.png");
         private World _world;
-
 
         public Bob(int x, int y, int width, int height, Form1 form, World world, int health, int attack, string name = "Bob") :
             base(x, y, width, height, form, health, attack, name)
         {
             _world = world;
             world.SetToTile(this);
+
+            var p = Directory.GetCurrentDirectory();
+
+            VoiceLines.Add(new SoundPlayer($"{p}/1.wav"));
+            VoiceLines.Add(new SoundPlayer($"{p}/2.wav"));
+            VoiceLines.Add(new SoundPlayer($"{p}/3.wav"));
         }
 
         public override void Draw(Graphics graphics)
         {
-            graphics.DrawImage(Image.FromFile("../../../resources/characters.png"), new Point(X * Width, Y * Height)); 
+            graphics.DrawImage(Sprite, new Point(X * Width, Y * Height)); 
         }
 
         public override void BattleDraw(Graphics graphics)
@@ -27,7 +34,7 @@
         {
             _world.MoveToNextTile(this);
             var random = new Random();
-            var cube = random.Next(1, 7);
+            var cube = random.Next(1, 10);
             switch (cube)
             {
                 case 1:
@@ -63,7 +70,7 @@
                 case 6:
                     new DebufWindow("Rat wants to fuck you");
                     var battleWindow = new BattleWindow();
-                    battleWindow.AddUnits(this, new FuckingRat(0, 0, 0, 0, Form, 0, 0, "Fucking"));
+                    battleWindow.AddUnits(this, new FuckingRat(0, 0, 0, 0, Form, 0, 0, "Nafanya"));
                     break;
             }
 

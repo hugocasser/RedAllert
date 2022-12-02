@@ -1,8 +1,12 @@
-﻿namespace RedAllert
+﻿using System.Media;
+
+namespace RedAllert
 {
     public partial class Form1 : Form
     {
         private List<GameObject> _gameObjects  = new List<GameObject>();
+
+        private Bob _bob;
 
         public Form1()
         {
@@ -11,7 +15,9 @@
         private void Start(object sender, EventArgs e)
         {
             var world = new World(3,3,0,0,this);
-            new Bob(4, 6, 32, 32, this,world, 10, 3, "Bob");
+            _bob = new Bob(4, 6, 32, 32, this,world, 10, 3, "Bob");
+            label2.Text = $"Attack / {_bob.Attack}";
+            label3.Text = $"Health / {_bob.Health}";
         }
 
         public void CreateNewObject(GameObject gameObject) => _gameObjects.Add(gameObject);
@@ -29,6 +35,8 @@
             //Battle();
 
             pictureBox1.Invalidate();
+            label2.Text = $"Attack / {_bob.Attack}";
+            label3.Text = $"Health / {_bob.Health}";
 
         }
         

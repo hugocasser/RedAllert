@@ -1,4 +1,6 @@
-﻿namespace RedAllert
+﻿using System.Media;
+
+namespace RedAllert
 {
 
     public abstract class ALifeUnit : GameObject
@@ -7,6 +9,7 @@
         internal int Health { get; set; }
         internal int Attack { get; set; }
 
+        protected List<SoundPlayer> VoiceLines = new List<SoundPlayer>();
         public ALifeUnit(int x, int y, int width, int height, Form1 form, int health, int attack, string name) : base(x, y, width,
             height, form)
         {
@@ -16,5 +19,11 @@
         }
 
         public abstract void BattleDraw(Graphics graphics);
+
+        public void PlayRandomVoice()
+        {
+            var random = new Random().Next(0, VoiceLines.Count);
+            VoiceLines[random].Play();
+        }
     }
 }

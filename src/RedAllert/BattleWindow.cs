@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,11 @@ namespace RedAllert
 {
     public partial class BattleWindow : Form
     {
+        private Image _ratSprite = Image.FromFile("../../../resources/rat.png");
+        private Image _zadovSprite = Image.FromFile("../../../resources/zadov.jpg");
+
+
+
         private ALifeUnit _player;
         private ALifeUnit _enemy;
 
@@ -51,6 +57,11 @@ namespace RedAllert
         private void Draw(object sender, PaintEventArgs e)
         {
             var graphics = e.Graphics;
+            float playerSize = 256;
+            float enemySize = 256;
+            graphics.DrawImage(_ratSprite, 256,0, (int)playerSize, (int)playerSize);
+            graphics.DrawImage(_zadovSprite, 24, 24, enemySize, enemySize);
+            Console.WriteLine("FF");
             // _player.Draw(graphics);
             // _enemy.Draw(graphics);
         }
@@ -62,6 +73,7 @@ namespace RedAllert
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            _player.PlayRandomVoice();
             var ratChoose = _random.Next(0,3);
             switch (ratChoose) {
                 case 0:
@@ -72,6 +84,7 @@ namespace RedAllert
                     _enemy.Health -= _player.Attack;
                     label1.Text = $"Здоровьешко: {_player.Health}";
                     label2.Text = $"Здоровьешко: {_enemy.Health}";
+                    _player.PlayRandomVoice();
                     break;
                 case 2:
                     new DebufWindow($"Поражение! {_enemy.Name} наносит вам {_enemy.Attack} ед. урона");
@@ -83,13 +96,19 @@ namespace RedAllert
             if (_enemy.Health <= 0)
             {
                 new DebufWindow("You Win");
+                _player.PlayRandomVoice();
+
                 Close();
             }
             else if(_player.Health <=0)
             {
                 new DebufWindow("You Lose((:(");
+                _player.PlayRandomVoice();
+
                 Close();
             }
+
+            pictureBox1.Invalidate();
         }
 
         /// <summary>
@@ -99,6 +118,8 @@ namespace RedAllert
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
+            _player.PlayRandomVoice();
+
             var ratChoose = _random.Next(0, 3);
             switch (ratChoose)
             {
@@ -116,19 +137,28 @@ namespace RedAllert
 
                     _enemy.Health -= _player.Attack;
                     label1.Text = $"Здоровьешко: {_player.Health}";
+                    _player.PlayRandomVoice();
+
                     label2.Text = $"Здоровьешко: {_enemy.Health}";
                     break;
             }
             if (_enemy.Health <= 0)
             {
                 new DebufWindow("You Win");
+                _player.PlayRandomVoice();
+
                 Close();
             }
             else if(_player.Health <=0)
             {
                 new DebufWindow("You Lose((:(");
+                _player.PlayRandomVoice();
+
                 Close();
             }
+
+            pictureBox1.Invalidate();
+
         }
 
         /// <summary>
@@ -138,6 +168,8 @@ namespace RedAllert
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
+            _player.PlayRandomVoice();
+
             var ratChoose = _random.Next(0, 3);
             switch (ratChoose)
             {
@@ -155,18 +187,27 @@ namespace RedAllert
                     break;
                 case 2:
                     new DebufWindow("Ничья!");
+                    _player.PlayRandomVoice();
+
                     break;
             }
             if (_enemy.Health <= 0)
             {
                 new DebufWindow("You Win");
+                _player.PlayRandomVoice();
+
                 Close();
             }
             else if(_player.Health <=0)
             {
                 new DebufWindow("You Lose((:(");
+                _player.PlayRandomVoice();
+
                 Close();
             }
+
+            pictureBox1.Invalidate();
+
         }
 
         private void label2_Click(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿namespace RedAllert
+﻿using System.Media;
+
+namespace RedAllert
 {
 
     public class FuckingRat : ALifeUnit
@@ -15,6 +17,8 @@
             Health = random.Next(6, 8);
             Attack = random.Next(2, 4);
             _gameObjectSolidBrush = new SolidBrush(Color.Blue);
+
+            VoiceLines.Add(new SoundPlayer("../../../resources/1.mp3"));
         }
 
         public override void Draw(Graphics graphics)
