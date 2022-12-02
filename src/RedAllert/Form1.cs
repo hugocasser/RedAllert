@@ -11,7 +11,7 @@
         private void Start(object sender, EventArgs e)
         {
             var world = new World(3,3,0,0,this);
-            new Bob(4, 6, 32, 32, this,world, 3, 10, "Bob");
+            new Bob(4, 6, 32, 32, this,world, 10, 3, "Bob");
         }
 
         public void CreateNewObject(GameObject gameObject) => _gameObjects.Add(gameObject);
@@ -25,11 +25,13 @@
         {
             for (var i = 0; i < _gameObjects.Count; i++)
                 _gameObjects[i]?.Update();
+            
+            //Battle();
 
             pictureBox1.Invalidate();
 
-            new BattleWindow();
         }
+        
 
         /// <summary>
         /// Draw picturebox

@@ -1,14 +1,12 @@
-﻿
-namespace RedAllert
+﻿namespace RedAllert
 {
     public class Bob : ALifeUnit
     {
         public Image Sprite = Image.FromFile("../../../resources/dirt.png");
-        public Image SpriteOnBattle;
         private World _world;
 
 
-        public Bob(int x, int y, int width, int height, Form1 form, World world, int health = 10, int attack = 2, string name = "Bob") :
+        public Bob(int x, int y, int width, int height, Form1 form, World world, int health, int attack, string name = "Bob") :
             base(x, y, width, height, form, health, attack, name)
         {
             _world = world;
@@ -29,7 +27,7 @@ namespace RedAllert
         {
             _world.MoveToNextTile(this);
             var random = new Random();
-            var cube = random.Next(1, 6);
+            var cube = random.Next(1, 7);
             switch (cube)
             {
                 case 1:
@@ -63,10 +61,18 @@ namespace RedAllert
                     }
                     break;
                 case 6:
-                    new BattleWindow();
+                    new DebufWindow("Rat wants to fuck you");
+                    var battleWindow = new BattleWindow();
+                    battleWindow.AddUnits(this, new FuckingRat(0, 0, 0, 0, Form, 0, 0, "Fucking"));
                     break;
-                
             }
+
+            if (Health <= 0)
+            {
+                new DebufWindow("You died(((");
+                Thread.Sleep(2000);
+                Application.Exit();
+            }    
         }
     }
 }
